@@ -10,10 +10,11 @@ public class Main {
 
         String answer = "+";
         while (answer.equals("+")) {
-            System.out.println("\nВведите дату в формате dd/MM/yyyy, например, 21/02/2019: ");
+            System.out.println("Введите дату в формате dd/MM/yyyy, например, 21/02/2019: ");
             String data = in.nextLine();
             System.out.println("Введите идентификатор валюты, например, USD: ");
             String currencyName = in.nextLine();
+            System.out.println();
 
             try {
                 Currency currency = new Currency(data, currencyName);
@@ -23,8 +24,9 @@ public class Main {
             } catch (DataNotFoundException e) {
                 e.printStackTrace();
             }
-            System.out.print("\nПродолжить? (+/-): ");
+            System.out.print("Продолжить? (+/-): ");
             answer = in.nextLine();
+            System.out.println();
         }
     }
 }

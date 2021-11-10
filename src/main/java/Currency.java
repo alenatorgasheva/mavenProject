@@ -46,7 +46,7 @@ public class Currency {
             if (cur.getElementsByTagName("CharCode").item(0).getTextContent().equals(currencyName)) {
                 String name = cur.getElementsByTagName("Name").item(0).getTextContent();
                 String value = cur.getElementsByTagName("Value").item(0).getTextContent();
-                System.out.println("\n1 " + name + " = " + value + " Российских рублей");
+                System.out.println("1 " + name + " = " + value + " Российских рублей\n");
                 return;
             }
         }
