@@ -38,18 +38,19 @@ public class Currency {
 
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
-        Document doc = builder.parse(new InputSource(new StringReader(data)));
-
-        NodeList currenciesList = doc.getElementsByTagName("Valute");
-        for (int i = 0; i < currenciesList.getLength(); i++) {
-            Element cur = (Element) currenciesList.item(i);
-            if (cur.getElementsByTagName("CharCode").item(0).getTextContent().equals(currencyName)) {
-                String name = cur.getElementsByTagName("Name").item(0).getTextContent();
-                String value = cur.getElementsByTagName("Value").item(0).getTextContent();
-                System.out.println("1 " + name + " = " + value + " Российских рублей\n");
-                return;
+        try (StringReader stringReader = new StringReader(data)) {
+            Document doc = builder.parse(new InputSource(stringReader));
+            NodeList currenciesList = doc.getElementsByTagName("Valute");
+            for (int i = 0; i < currenciesList.getLength(); i++) {
+                Element cur = (Element) currenciesList.item(i);
+                if (cur.getElementsByTagName("CharCode").item(0).getTextContent().equals(currencyName)) {
+                    String name = cur.getElementsByTagName("Name").item(0).getTextContent();
+                    String value = cur.getElementsByTagName("Value").item(0).getTextContent();
+                    System.out.println("1 " + name + " = " + value + " Российских рублей\n");
+                    return;
+                }
             }
+            throw new DataNotFoundException();
         }
-        throw new DataNotFoundException();
     }
 }
