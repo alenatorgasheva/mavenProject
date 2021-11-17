@@ -17,7 +17,7 @@ public class Main {
 
             try {
                 Currency currency = new Currency(data, currencyName);
-                currency.getExchangeRate();
+                Service.printExchangeRate(currency);
             } catch (EmptyInputDataException e) {
                 e.printStackTrace();
             } catch (DataNotFoundException e) {

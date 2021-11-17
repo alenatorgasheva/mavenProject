@@ -31,25 +31,5 @@ public class Currency {
         return currencyName;
     }
 
-    public void getExchangeRate() throws ParserConfigurationException, IOException, SAXException, DataNotFoundException {
-        String url = "https://www.cbr.ru/scripts/XML_daily.asp?date_req=" + date;
 
-        String data = Unirest.get(url).asString().getBody();
-
-        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder builder = factory.newDocumentBuilder();
-        Document doc = builder.parse(new InputSource(new StringReader(data)));
-
-        NodeList currenciesList = doc.getElementsByTagName("Valute");
-        for (int i = 0; i < currenciesList.getLength(); i++) {
-            Element cur = (Element) currenciesList.item(i);
-            if (cur.getElementsByTagName("CharCode").item(0).getTextContent().equals(currencyName)) {
-                String name = cur.getElementsByTagName("Name").item(0).getTextContent();
-                String value = cur.getElementsByTagName("Value").item(0).getTextContent();
-                System.out.println("\n1 " + name + " = " + value + " Российских рублей");
-                return;
-            }
-        }
-        throw new DataNotFoundException();
-    }
 }
