@@ -1,3 +1,5 @@
+package Maven;
+
 public class DataNotFoundException extends Exception{
     @Override
     public void printStackTrace() {

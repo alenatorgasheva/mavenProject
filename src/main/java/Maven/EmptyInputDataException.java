@@ -1,3 +1,5 @@
+package Maven;
+
 public class EmptyInputDataException extends Exception{
     @Override
     public void printStackTrace() {
