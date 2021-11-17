@@ -2,11 +2,12 @@ package Maven;
 
 public class Main {
     public static void main(String[] args) {
+        System.out.println("УРА!!!");
         ServiceAPI serviceAPI = new ServiceAPI();
         ServiceDB serviceDB = new ServiceDB();
 
         if (!args[0].equals("updateDB")) {
-            String data = args[0];
+            String data = serviceAPI.correctDate(args[0]);
             String currencyName = args[1];
 
             try {
@@ -21,7 +22,7 @@ public class Main {
                 e.printStackTrace();
             }
         } else {
-            String date = args[1];
+            String date = serviceAPI.correctDate(args[1]);
 
             serviceDB.updateDatabase(date);
         }
