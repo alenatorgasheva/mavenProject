@@ -27,3 +27,4 @@ public class Main {
         }
     }
 }
+// java -jar my-maven-program.jar 2019-01-21 usd

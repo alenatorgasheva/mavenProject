@@ -13,8 +13,8 @@ public class ServiceDB extends Service {
 
     @Override
     public boolean getExchangeRate(Currency currency) throws DataNotFoundException {
-        try (Connection connection = DriverManager.getConnection(url, user, password)) {
-            Statement statement = connection.createStatement();
+        try (Connection connection = DriverManager.getConnection(url, user, password);
+             Statement statement = connection.createStatement()) {
             String query = "SELECT * FROM exchangeRates WHERE (`currency_name` = '" + currency.getCurrencyName() + "') AND (`date` = '" + currency.getDate() + "');";
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
@@ -28,8 +28,8 @@ public class ServiceDB extends Service {
     }
 
     public void updateDatabase(String date) {
-        try (Connection connection = DriverManager.getConnection(url, user, password)) {
-            Statement statement = connection.createStatement();
+        try (Connection connection = DriverManager.getConnection(url, user, password);
+             Statement statement = connection.createStatement()) {
             List<Currency> currencyList = ServiceAPI.getRatesByDate(date);
 
             for (Currency currency : currencyList) {

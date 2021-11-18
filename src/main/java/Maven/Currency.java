@@ -31,6 +31,6 @@ public class Currency {
     }
 
     public void printInfo() {
-        System.out.println("\n1 " + currencyName + " = " + rate + " RUB");
+        System.out.println("1 " + currencyName + " = " + rate + " RUB");
     }
 }
