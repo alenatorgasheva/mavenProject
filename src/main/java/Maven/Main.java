@@ -2,7 +2,6 @@ package Maven;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("УРА!!!");
         ServiceAPI serviceAPI = new ServiceAPI();
         ServiceDB serviceDB = new ServiceDB();
 

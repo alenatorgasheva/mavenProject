@@ -31,7 +31,7 @@ public class ServiceAPI extends Service {
                 Element cur = (Element) currenciesList.item(i);
                 String currencyName = cur.getElementsByTagName("CharCode").item(0).getTextContent();
                 String value = cur.getElementsByTagName("Value").item(0).getTextContent();
-                Currency currency = new Currency(currencyName, date);
+                Currency currency = new Currency(date, currencyName);
                 currency.setRate(Double.parseDouble(value.replace(",",".")));
                 curList.add(currency);
             }
